@@ -1,5 +1,4 @@
 import React from 'react'
-import { EditUser } from './EditUser';
 
 export const EditUser = () => {
   return (
