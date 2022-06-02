@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
+import EmployeeService from '../../services/EmployeeService';
 
-class ListEmployeesComponent extends Component {
+
+
+class ListEmployeeComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = { 
             employees: []
         }
+
+        this.addEmployee = this.addEmployee.bind(this);
     }
+
+    componentDidMount(){
+        EmployeeService.getEmployees().then((res) => {
+            this.setState({employees: res.data});
+        });
+    }
+
+    addEmployee() {
+        this.props.history.push('/add');
+    }
+
     render() {
         return (
-            <div>
-                <h2 className="text-center">Employess List</h2>
+        <div>
+                <h2 className="text-center">Employees List</h2>
+                <div className="row">
+                    <button className="btn btn-primary" onClick={this.addEmployee}>Add Employee</button>
+                </div>
                 <div className="row">
                     <table className="table table-striped table-bordered">
-                        
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -25,12 +43,12 @@ class ListEmployeesComponent extends Component {
                                 <th>Actions</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             {
                                 this.state.employees.map(
                                     employee =>
-                                    <tr key={employee.id}>
+                                    <tr>
+                                        <td>{employee.id}</td>
                                         <td>{ employee.name }</td>
                                         <td>{ employee.jobTitle }</td>
                                         <td>{ employee.email }</td>
@@ -39,7 +57,6 @@ class ListEmployeesComponent extends Component {
                                 )
                             }
                         </tbody>
-                        
                     </table>
                 </div>
             </div>
@@ -47,5 +64,5 @@ class ListEmployeesComponent extends Component {
     }
 }
 
-export default ListEmployeesComponent;
+export default ListEmployeeComponent;
 
