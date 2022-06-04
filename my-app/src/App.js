@@ -5,7 +5,7 @@ import ListEmployeeComponent  from "./components/jsx/ListEmployeeComponent";
 import HeaderComponent from "./components/jsx/HeaderComponent";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Routes, Route} from "react-router";
-import CreateEmployeeComponent from './components/jsx/AddEmployeeComponent';
+import AddEmployeeComponent from './components/jsx/AddEmployeeComponent';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<ListEmployeeComponent/>}/>
                             <Route path="/employee" element={<ListEmployeeComponent/>}/>
-                            <Route path="/add" element={<CreateEmployeeComponent/>}/>
+                            <Route path="/add" element={<AddEmployeeComponent/>}/>
                         </Routes>
                     </div>
                 </div>
